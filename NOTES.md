@@ -95,3 +95,35 @@
 ## Downwards Dataflow
 
 - ONLY the most parent Component in an application should be responsible for fetching data (api's, flux, redux, etc)
+
+## props
+
+- in a functional component the props object is an argument
+- in a class-based component props are available anywhere in any method I define as this.props
+
+## ** ALWAYS ask myself before creating a new component -> Do I need this component to maintain any type of state? -> if so use a class component - if not use a function component
+
+## ** RECOMMENDED - name my top level classNames in JSX the same as the Component for styling purposes.
+
+- this makes it easier in the CSS
+- eg. // class SearchBar + className="search-bar" makes it easy and clear to style in CSS
+
+``` class **SearchBar** extends Component {
+        constructor (props) {
+            super(props);
+        
+            this.state = { term: '' };
+        }
+      // The input below tells the state what it SHOULD be
+        render () {
+          return (
+            <div **className="search-bar"**> // className search-bar makes it easy and clear to style in CSS
+            <input 
+            value={this.state.term}
+            onChange={event => this.setState({ term: event.target.value })} />
+            </div>
+          );
+        }
+      } 
+```
+
